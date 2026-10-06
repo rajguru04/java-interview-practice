@@ -1,3 +1,5 @@
+package string;
+
 public class ReverseString {
     public static void main(String[] args){
         String str = "java concept of the day";
