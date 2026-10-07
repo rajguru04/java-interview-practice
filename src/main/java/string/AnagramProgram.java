@@ -6,7 +6,7 @@ public class AnagramProgram {
     public static void main(String[] args){
         String str1 = "anagram";
         String str2 = "nagaram";
-        boolean isValidAnagram = checkAnagram(str1, str2);
+        boolean isValidAnagram = checkAnagramWithoutUsingMap(str1, str2);
         if(isValidAnagram){
             System.out.println("given strings are anagram");
         } else {
@@ -35,5 +35,26 @@ public class AnagramProgram {
           }
         }
         return map.isEmpty();
+    }
+
+    private static boolean checkAnagramWithoutUsingMap(String str1, String str2){
+        if(str1.length()!=str2.length()){
+            return false;
+        }
+        char[] charStr1 = str1.toCharArray();
+        char[] charStr2 = str2.toCharArray();
+        int[] count = new int[26];
+        for(char ch : charStr1){
+            count[ch - 'a']++;
+        }
+        for(char ch : charStr2){
+            count[ch - 'a']--;
+        }
+        for (int j : count) {
+            if (j != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
